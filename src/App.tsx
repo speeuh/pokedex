@@ -1,26 +1,46 @@
 import { useEffect, useState } from 'react';
-import { loadPokemons } from './api';
+import { fetchPokemonData, loadPokemons } from './api';
 import Navbar from './components/navbar';
 
 import styles from './App.module.scss';
+import Pokedex from './components/pokedex';
 
 function App() {
-  const [pokemons, setPokemons] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [pokemons, setPokemons] = useState<any[]>([]);
 
   const fetchPokemons = async () => {
-    const result = await loadPokemons();
-    setPokemons(result);
+    try {
+      setLoading(true);
+      const data = await loadPokemons();
+      const promises = data.results.map(async (pokemon: any) => {
+        return await fetchPokemonData(pokemon.url);
+      });
+
+      const results = await Promise.all(promises);
+      setPokemons(results);
+    } catch (error) {
+      console.log('Error when fetch data: ', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchPokemons();
-    console.log(pokemons);
   }, []);
 
   return (
-    <div className={styles.page}>
-      <Navbar />
-    </div>
+    <>
+      {loading ? (
+        'Loading...'
+      ) : (
+        <div className={styles.page}>
+          <Navbar />
+          <Pokedex pokemons={pokemons} />
+        </div>
+      )}
+    </>
   );
 }
 
