@@ -1,6 +1,11 @@
 .container {
-    margin: 4em;
     display: grid;
-    gap: 1em;
     grid-template-columns: repeat(3, 1fr);
+
+    gap: 1em;
+    margin: 0.5em 4em 0em 4em;
+    padding: 4em;
+    border-radius: 1em;
+
+    background-color: #263238;
 }

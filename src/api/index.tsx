@@ -1,4 +1,4 @@
-export const loadPokemons = async (limit = 6, offset = 0) => {
+export const loadPokemons = async (limit = 21, offset = 0) => {
     try {
         let url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
         const response = await fetch(url);

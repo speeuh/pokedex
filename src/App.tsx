@@ -5,6 +5,8 @@ import Navbar from './components/navbar';
 import styles from './App.module.scss';
 import Pokedex from './components/pokedex';
 
+import background from './assets/pokemon_background.jpg';
+
 function App() {
   const [loading, setLoading] = useState(false);
   const [pokemons, setPokemons] = useState<any[]>([]);
@@ -35,7 +37,7 @@ function App() {
       {loading ? (
         'Loading...'
       ) : (
-        <div className={styles.page}>
+        <div className={styles.page} style={{background: `url(${background})`}}>
           <Navbar />
           <Pokedex pokemons={pokemons} />
         </div>
