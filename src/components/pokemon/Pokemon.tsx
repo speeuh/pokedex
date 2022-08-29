@@ -21,7 +21,7 @@ export default function Pokemon({ pokemon }: IPokemon) {
             <div className={styles.card__types_container}>
               {pokemon.types.map((_: any, index: number) => {
                 return (
-                  <div className={styles.card_types} key={index}>
+                  <div className={styles.card__types} key={index}>
                     {_.type.name}
                   </div>
                 );

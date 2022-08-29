@@ -1,11 +1,17 @@
 .container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 
-    gap: 1em;
-    margin: 0.5em 4em 0em 4em;
-    padding: 4em;
-    border-radius: 1em;
+  gap: 1em;
+  margin: 0.5em 4em 0em 4em;
+  padding: 4em;
+  border-radius: 1em;
 
-    background-color: #263238;
+  background-color: #263238;
+}
+
+.pagination_bar {
+  width: 100%;
+  justify-content: center;
+  grid-column-start: 2;
 }
