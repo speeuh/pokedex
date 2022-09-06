@@ -1,12 +1,29 @@
 import { NavLink, Outlet } from 'react-router-dom';
 import classNames from 'classnames';
 
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
-
 import styles from './Navbar.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Searchbar from '../searchbar/Searchbar';
+import { getPokemonById } from '../../api';
+import { useState } from 'react';
+
 
 export default function Navbar() {
+
+  const [loading, setLoading] = useState(false);
+  const [notFound, setNotFound] = useState(false);
+
+  const onSearchHandler = async (pokemon: any) => {
+    try {
+      setLoading(true)
+      setNotFound(false)
+      const result = await getPokemonById(pokemon)
+    } catch (error) {
+      console.log('Error when fetch data', error);
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <>
       <nav className={styles.container}>
@@ -40,18 +57,7 @@ export default function Navbar() {
           </li>
         </ul>
 
-        <form name='search'>
-          <label>
-            <input
-              type='text'
-              className={styles.search__input}
-              placeholder='Search...'
-            />
-            <button type='submit' className={styles.search__input_button}>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
-            </button>
-          </label>
-        </form>
+        <Searchbar search={onSearchHandler}/>
       </nav>
 
       <Outlet />

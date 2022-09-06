@@ -23,23 +23,6 @@
   }
 }
 
-.search {
-  &__input {
-    color: #1e272c;
-    justify-content: flex-end;
-    font-size: 18px;
-    padding: 6px;
-    border: none;
-  }
-
-  &__input_button {
-    font-size: 18px;
-    padding: 6px;
-    cursor: pointer;
-    border: none;
-  }
-}
-
 .active {
   border-bottom: 3px solid #ffd52d;
   transition: border-bottom 0.5s ease-in-out;

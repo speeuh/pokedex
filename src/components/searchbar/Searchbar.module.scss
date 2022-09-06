@@ -1,0 +1,22 @@
+.search {
+  &__input {
+    color: #1e272c;
+    justify-content: flex-end;
+    font-size: 18px;
+    padding: 6px;
+    border: none;
+  }
+
+  &__input_button {
+    font-size: 18px;
+    padding: 6px;
+    cursor: pointer;
+    border: none;
+  }
+
+  &__input_button_disabled {
+    font-size: 18px;
+    padding: 6px;
+    border: none;
+  }
+}
