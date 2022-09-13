@@ -5,18 +5,19 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './Searchbar.module.scss';
 
-interface INavbar {
+interface ISearchbar {
   search: any;
 }
 
-export default function Searchbar({ search }: INavbar) {
+export default function Searchbar({ search }: ISearchbar) {
   const [searchPokemon, setSearchPokemon] = useState('');
 
   const onChangeHandler = (event: any) => {
     setSearchPokemon(event.target.value);
   };
 
-  const onButtonClickHandler = () => {
+  const onButtonClickHandler = (event: any) => {
+    event.preventDefault();
     search(searchPokemon);
   };
 
@@ -36,7 +37,6 @@ export default function Searchbar({ search }: INavbar) {
               ? styles.search__input_button_disabled
               : styles.search__input_button
           }
-          disabled={!searchPokemon}
           onClick={onButtonClickHandler}
         >
           <FontAwesomeIcon icon={faMagnifyingGlass} />
