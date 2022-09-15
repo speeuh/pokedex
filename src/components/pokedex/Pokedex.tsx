@@ -8,6 +8,7 @@ interface IPokedex {
   pageSize: number;
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  notFound: boolean;
 }
 
 export default function Pokedex({
@@ -16,10 +17,15 @@ export default function Pokedex({
   pageSize,
   currentPage,
   setCurrentPage,
+  notFound,
 }: IPokedex) {
   return (
     <>
-      {Object.keys(filteredPokemon).length !== 0 ? (
+      {notFound === true ? (
+        <h2 className={styles.container}>
+          Pokemon not found, please enter again!
+        </h2>
+      ) : Object.keys(filteredPokemon).length !== 0 ? (
         <div className={styles.container}>
           <Pokemon pokemon={filteredPokemon} />
         </div>

@@ -9,6 +9,7 @@ import PokemonFavorites from "./components/pokemon/favorites/PokemonFavorites";
 
 import { useEffect, useState } from "react";
 import { fetchPokemonData, getPokemonById, loadPokemons } from "./api";
+import PokemonDetails from "./components/pokemon/details/PokemonDetails";
 
 let PageSize = 21;
 
@@ -50,6 +51,8 @@ export default function AppRouter() {
         const result = await getPokemonById(pokemon.toLowerCase());
         if (result !== undefined) {
           setFilteredPokemon(result);
+        } else {
+          setNotFound(true);
         }
       } else {
         setFilteredPokemon([]);
@@ -81,10 +84,12 @@ export default function AppRouter() {
                       pageSize={PageSize}
                       currentPage={currentPage}
                       setCurrentPage={setCurrentPage}
+                      notFound={notFound}
                     />
                   }
                 />
                 <Route path="favorites" element={<PokemonFavorites />} />
+                <Route path="details/:id" element={<PokemonDetails />} />
               </Route>
             </Routes>
           </Router>
