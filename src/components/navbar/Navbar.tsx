@@ -30,16 +30,6 @@ export default function Navbar({ onSearchHandler }: INavbar) {
               Pokedex
             </NavLink>
           </li>
-          <li className={styles.list__items}>
-            <NavLink
-              to="/favorites"
-              className={({ isActive }) =>
-                isActive ? classNames(styles.active) : undefined
-              }
-            >
-              Favorites
-            </NavLink>
-          </li>
         </ul>
 
         <Searchbar search={onSearchHandler} />

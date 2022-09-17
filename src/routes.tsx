@@ -5,7 +5,6 @@ import Pokedex from "./components/pokedex/Pokedex";
 
 import styles from "./Routes.module.scss";
 import background from "./assets/pokemon_background.jpg";
-import PokemonFavorites from "./components/pokemon/favorites/PokemonFavorites";
 
 import { useEffect, useState } from "react";
 import { fetchPokemonData, getPokemonById, loadPokemons } from "./api";
@@ -88,7 +87,6 @@ export default function AppRouter() {
                     />
                   }
                 />
-                <Route path="favorites" element={<PokemonFavorites />} />
                 <Route path="details/:id" element={<PokemonDetails />} />
               </Route>
             </Routes>
